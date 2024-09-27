@@ -113,6 +113,23 @@ pip install -r requirements.txt
 <img src="https://github.com/user-attachments/assets/d23b8ddf-2302-40a8-8425-f6a93331e31d?raw=true" alt="alt text" width="200"/>
 
 
-## Commands
-Examples:
+#  Commands
+### Examples:
 
+<img src="https://github.com/user-attachments/assets/5b8c5eb5-4c4e-4be3-a5c0-be1610d17f93" alt="1" width="40%"/>
+
+
+
+<img src="https://github.com/user-attachments/assets/12e10894-8a0e-4c5a-9e52-fa6aaade73d8" alt="2" width="40%"/>
+
+<img src="https://github.com/user-attachments/assets/7ecc9b93-a9eb-43a1-93a2-01ea4d89f423" alt="3" width="40%"/>
+
+<img src="https://github.com/user-attachments/assets/18f33de2-1203-4ef5-ab05-29a339a75346" alt="4" width="40%"/>
+
+<img src="https://github.com/user-attachments/assets/84c449b4-ccb5-4f5e-9ef2-3b3e417bf325" alt="4" width="40%"/>
+
+<img src="https://github.com/user-attachments/assets/6206185c-77aa-45ec-b8b8-48bf5f4be769" alt="5" width="40%"/>
+
+<img src="https://github.com/user-attachments/assets/f0ffa5f2-d336-49eb-a5e4-0dd3840aba48" alt="6" width="40%"/>
+
+<img src="https://github.com/user-attachments/assets/0cee06ce-49e7-4beb-b17a-fe105dd197c5" alt="7" width="40%"/>
