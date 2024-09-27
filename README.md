@@ -113,37 +113,5 @@ pip install -r requirements.txt
 
 
 ## Commands
+Examples:
 
-### Help Command
-<img src="https://github.com/levox00/discord-InviteTracker-Giveaway-Bot/blob/main/images/help.png?raw=true" alt="alt text" width="400"/>
-
-### Giveaway Create Command
-<img src="https://github.com/levox00/discord-InviteTracker-Giveaway-Bot/blob/main/images/gw-create.png?raw=true" alt="alt text" width="400"/>
-
-### Giveaway Reroll Command
-<img src="https://github.com/levox00/discord-InviteTracker-Giveaway-Bot/blob/main/images/gw-reroll.png?raw=true" alt="alt text" width="400"/>
-
-### Leaderboard Invites
-<img src="https://github.com/levox00/discord-InviteTracker-Giveaway-Bot/blob/main/images/leaderboard.png?raw=true" alt="alt text" width="400"/>
-
-### User Invites
-<img src="https://github.com/levox00/discord-InviteTracker-Giveaway-Bot/blob/main/images/user-invites.png?raw=true" alt="alt text" width="400"/>
-
-### Inviter Command
-<img src="https://github.com/levox00/discord-InviteTracker-Giveaway-Bot/blob/main/images/inviter.png?raw=true" alt="alt text" width="400"/>
-
-### Invitelists Command
-<img src="https://github.com/levox00/discord-InviteTracker-Giveaway-Bot/blob/main/images/invlist.png?raw=true" alt="alt text" width="400"/>
-
-### Leaderboard Export Command
-<img src="https://github.com/levox00/discord-InviteTracker-Giveaway-Bot/blob/main/images/export.png?raw=true" alt="alt text" width="400"/>
-
-### Leaderboard Replace/Import Command
-<img src="https://github.com/levox00/discord-InviteTracker-Giveaway-Bot/blob/main/images/replace.png?raw=true" alt="alt text" width="400"/>
-
-### Other commands
-``/avatar`` Displays someones avatar (Profile/Banner) -> [EXAMPLE](https://github.com/levox00/discord-InviteTracker-Giveaway-Bot/blob/main/images/banner.png?raw=True)**
-
-``/server icon`` display the server icon [EXAMPLE](https://github.com/levox00/discord-InviteTracker-Giveaway-Bot/blob/main/images/servericon.png?raw=True)
-
-``/server stats`` display server stats -> [EXAMPLE](https://github.com/levox00/discord-InviteTracker-Giveaway-Bot/blob/main/images/stats.png?raw=True)
