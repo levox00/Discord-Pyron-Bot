@@ -1,6 +1,7 @@
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/5a6e0f73-7c59-4ceb-8abc-04f13c1b21db" alt="image" width="900"/>
+  <img src="https://github.com/user-attachments/assets/bb38377d-a231-455f-a05a-fe70a915ad84" alt="image" width="900"/>
 </div>
+
 
 
 
@@ -19,13 +20,13 @@
     <img src="https://discordapp.com/api/guilds/1287837829711528019/widget.png?style=shield" alt="Discord Server">
   </a>
   <a href="https://github.com/levox00/Discord-InviteTracker-Bot">
-    <img src="https://img.shields.io/github/stars/levox00/Discord-InviteTracker-Bot?style=shield&color=%23607dff" alt="GitHub Repo stars">
+    <img src="https://img.shields.io/github/stars/levox00/Discord-Pyron-Bot?style=shield&color=%23607dff" alt="GitHub Repo stars">
   </a>
   <a href="#">
     <img src="https://img.shields.io/badge/GOAL-2%20Stars-green?style=shield" alt="GOAL">
   </a>
   <a href="https://github.com/levox00/Discord-InviteTracker-Bot">
-    <img src="https://img.shields.io/github/downloads/levox00/Discord-InviteTracker-Bot/total.svg?style=shield" alt="Monthly Downloads">
+    <img src="https://img.shields.io/github/downloads/levox00/Discord-Pyron-Bot/total.svg?style=shield" alt="Monthly Downloads">
   </a>
 </p>
 
@@ -48,8 +49,9 @@ Pyron os a powerful Discord bot designed specifically for invite tracking! Unlik
     <p><strong>Why does Pyron need X permissions and how can I toggle them off?</strong></p>
     <p><a href="permissions.md">Read more here</a></p>
   </div>
-  <img src="https://github.com/user-attachments/assets/6a1e2f32-6bba-4e73-99d7-88c787cc566f" alt="Alternativtext" width="200"/>
+  <img src="https://github.com/user-attachments/assets/6791c31d-1a62-41b0-b609-09d006b170d8" alt="Alternativtext" width="200"/>
 </div>
+
 
 ## Command Usage
 
@@ -62,7 +64,7 @@ With Pyron, you can load, update, or remove commands easily when hosting the bot
   Options:
   `moderation`, `leaderboard`, `giveaway`, `commands`
 
-<img src=https://github.com/user-attachments/assets/1d855880-d4d3-4caf-80c8-f4b18a64b908 loop=infinite/>
+<img src=https://github.com/user-attachments/assets/7babc198-a00d-4c0f-96bc-c219a9c97358 loop=infinite/>
 
 ## Self Hosting requirements
 
@@ -108,8 +110,7 @@ pip install -r requirements.txt
  - Removed stuff that made bot response slow
  - Made all commands compatible with the new file format
 
-<img src="https://github.com/user-attachments/assets/7d669ccc-8bb6-4b1f-8fe1-ce858581d3bb?raw=true" alt="alt text" width="200"/>
-
+<img src="https://github.com/user-attachments/assets/d23b8ddf-2302-40a8-8425-f6a93331e31d?raw=true" alt="alt text" width="200"/>
 
 
 ## Commands
