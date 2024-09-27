@@ -8,7 +8,7 @@
 <h1 align="center" style="display: flex; align-items: center; justify-content: center;">
   Pyron - Invite Tracking, Giveaway Discord Bot
   <a href="https://discord.com/oauth2/authorize?client_id=1088751762401398865&scope=bot&permissions=268495982" style="margin-left: 10px; margin-bottom: 0px;">
-    <img src="https://github.com/levox00/discord-InviteTracker-Giveaway-Bot/blob/main/images/Bt2.png" width="150" alt="Invite Bot" />
+    <img src="https://github.com/user-attachments/assets/605c0c96-62b8-4fcd-9f77-724914ba3608" width="150" alt="Invite Bot" />
   </a>
 </h1>
 
