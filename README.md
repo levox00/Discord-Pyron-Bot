@@ -2,7 +2,7 @@
 [![Bot Invite](https://img.shields.io/badge/Invite%20Bot-7289DA?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/oauth2/authorize?client_id=1088751762401398865&scope=bot&permissions=268495982)
 ![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/levox00/Discord-Pyron-Bot/total?style=for-the-badge&label=%F0%9F%93%A5Downloads&labelColor=green&color=gray)
 [![GitHub stars](https://img.shields.io/badge/⭐%20Stars-2%2F5-yellow?style=for-the-badge)](https://github.com/levox00/Discord-Pyron-Bot/stargazers)
-[![Top Language](https://img.shields.io/badge/Top%20Language-Python-blue?style=for-the-badge&logo=python&logoColor=white)](https://github.com/{username}/{repository})
+[![Top Language](https://img.shields.io/badge/Top%20Language-Python-blue?style=for-the-badge&logo=python&logoColor=white)](https://github.com/levox00/Discord-Pyron-Bot)
 [![Contributors](https://img.shields.io/github/contributors/levox00/Discord-Pyron-Bot?style=for-the-badge&color=blue&label=💙%20Contributors)](https://github.com/levox00/Discord-Pyron-Bot/graphs/contributors)
 
 
@@ -26,23 +26,28 @@
     <li>
       <a href="#overview">Overview</a>
       <ul>
-        <li><a href="#features">Features</a></li>
+        <li><a href="#-support-this-project">Support Project</a></li>
+      </ul>
+      <ul>
+        <li><a href="#-features">Features</a></li>
       </ul>
     </li>
     <li>
-      <a href="#getting-started">Getting Started</a>
+      <a href="#-getting-started">Getting Started</a>
       <ul>
         <li><a href="#self-hosting-requirements">Requirements</a></li>
         <li><a href="#self-hosting-installation">Installation</a></li>
       </ul>
     </li>
     <li>
-      <a href="#command-usage">Usage of cogs commands</a>
+      <a href="#-command-usage">Usage of cogs commands</a>
     </li>
     <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#-star-history">Star History</a></li>
+    <li><a href="#%EF%B8%8F-command-imagess">Command images</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#-contact">Contact</a></li>
   </ol>
 </details>
     <details>
@@ -53,17 +58,17 @@
       </a>
     </details>
     
-# 👀 Overview
+# Overview
 
 
 Pyron is a powerful Discord bot made especially for invite tracking! This bot serves as an alternative to other popular invite trackers that you can either host yourself or use the 24/7 hosted version. Pyron offers a wide array of useful features that can be utilized together, such as the **invite role** along with the required roles for ``/giveaways create``. This bot also includes commands like ``/server stats``, ``/avatar``, and ``/purge`` <sup>(soon)</sup>, among others!
 
 
-### 🤝 Support This Project 
+### 🤝 Support This Project
 
-If you want to support this project you can do so by contrubting in any way or sponsoring.
+If you want to support this project you can do so by contrubting in any way or [sponsoring](https://github.com/levox00/Discord-Pyron-Bot/?sponsor=1).
 
-[Sponsor here](https://github.com/levox00/Discord-Pyron-Bot/?sponsor=1)
+<sub>**You can also support by simply staring this repository!**</sub>
 
 
 
@@ -123,7 +128,7 @@ pip install -r requirements.txt
    - `py!load moderation`
 
 
-## Command Usage
+## 📝 Command Usage
 
 With Pyron, you can load, update, or remove commands easily when hosting the bot yourself. Use the following commands to manage your features:
 
@@ -150,13 +155,12 @@ With Pyron, you can load, update, or remove commands easily when hosting the bot
 > If you have more ideas or suggestions, feel free to propose them under the [Issues](https://github.com/levox00/Discord-Pyron-Bot/issues) section or join our [Discord server](https://discord.gg/TmZrJs3bTz)!
 
 
-## Star History
+## ⭐ Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=levox00/Discord-Pyron-Bot&type=Date)](https://star-history.com/#levox00/Discord-Pyron-Bot&Date&width=100)
 
 
-#  Commands
-### Examples:
+## 🖼️ Command imagess:
 
 <img src="https://github.com/user-attachments/assets/5b8c5eb5-4c4e-4be3-a5c0-be1610d17f93" alt="1" width="40%"/>
 
@@ -175,3 +179,8 @@ With Pyron, you can load, update, or remove commands easily when hosting the bot
 <img src="https://github.com/user-attachments/assets/f0ffa5f2-d336-49eb-a5e4-0dd3840aba48" alt="6" width="40%"/>
 
 <img src="https://github.com/user-attachments/assets/0cee06ce-49e7-4beb-b17a-fe105dd197c5" alt="7" width="40%"/>
+
+### 👤 Contact
+
+Trough discord:
+[Discord server](https://discord.gg/TmZrJs3bTz) or [direct message me on discord](https://discord.com/users/1025125432825237514)
