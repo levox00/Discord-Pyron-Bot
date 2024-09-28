@@ -63,7 +63,7 @@ Pyron is a powerful Discord bot made especially for invite tracking! This bot se
 
 If you want to support this project you can do so by contrubting in any way or sponsoring.
 
-(Sponsor here)[https://github.com/levox00/Discord-Pyron-Bot/?sponsor=1]
+[Sponsor here](https://github.com/levox00/Discord-Pyron-Bot/?sponsor=1)
 
 
 
