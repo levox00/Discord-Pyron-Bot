@@ -23,10 +23,13 @@
     <img src="https://img.shields.io/github/stars/levox00/Discord-Pyron-Bot?style=shield&color=%23607dff" alt="GitHub Repo stars">
   </a>
   <a href="#">
-    <img src="https://img.shields.io/badge/GOAL-2%20Stars-green?style=shield" alt="GOAL">
+    <img src="https://img.shields.io/badge/GOAL-5%20Stars-green?style=shield" alt="GOAL">
+  </a>
+  <a>
+    <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/levox00/Discord-Pyron-Bot">
   </a>
   <a href="https://github.com/levox00/Discord-InviteTracker-Bot">
-    <img src="https://img.shields.io/github/downloads/levox00/Discord-Pyron-Bot/total.svg?style=shield" alt="Monthly Downloads">
+    <img alt="GitHub Downloads (all assets, all releases)" src="https://img.shields.io/github/downloads/levox00/Discord-Pyron-Bot/total">
   </a>
 </p>
 
