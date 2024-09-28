@@ -63,6 +63,7 @@
 
 Pyron is a powerful Discord bot made especially for invite tracking! This bot serves as an alternative to other popular invite trackers that you can either host yourself or use the 24/7 hosted version. Pyron offers a wide array of useful features that can be utilized together, such as the **invite role** along with the required roles for ``/giveaways create``. This bot also includes commands like ``/server stats``, ``/avatar``, and ``/purge`` <sup>(soon)</sup>, among others!
 
+Vote for more features: [here](https://www.menti.com/alm2tenbzzjg)
 
 ### 🤝 Support This Project
 
