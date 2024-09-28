@@ -13,7 +13,7 @@
 
 
 <h1 align="center" style="display: flex; align-items: center; justify-content: center;">
-  Pyron - Invite Tracking, Giveaway, Welcome messages Discord Bot
+  Pyron - Invite Tracking, Giveaway, Welcome messages and much more
   <a href="https://discord.com/oauth2/authorize?client_id=1088751762401398865&scope=bot&permissions=268495982" style="margin-left: 10px; margin-bottom: 0px;">
     <img src="https://github.com/user-attachments/assets/605c0c96-62b8-4fcd-9f77-724914ba3608" width="150" alt="Invite Bot" />
   </a>
@@ -33,7 +33,7 @@
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#self-hosting-requirements">Requirements</a></li>
-        <li><a href="#installation">Installation</a></li>
+        <li><a href="#self-hosting-installation">Installation</a></li>
       </ul>
     </li>
     <li>
@@ -53,11 +53,21 @@
       </a>
     </details>
     
-# Overview
+# 👀 Overview
 
-Pyron os a powerful Discord bot designed specifically for invite tracking! Unlike many other bots that charge for premium features, Pyron offers a variety of advanced functionalities completely for free.
 
-### Features
+Pyron is a powerful Discord bot made especially for invite tracking! This bot serves as an alternative to other popular invite trackers that you can either host yourself or use the 24/7 hosted version. Pyron offers a wide array of useful features that can be utilized together, such as the **invite role** along with the required roles for ``/giveaways create``. This bot also includes commands like ``/server stats``, ``/avatar``, and ``/purge`` <sup>(soon)</sup>, among others!
+
+
+### 🤝 Support This Project 
+
+If you want to support this project you can do so by contrubting in any way or sponsoring.
+
+(Sponsor here)[https://github.com/levox00/Discord-Pyron-Bot/?sponsor=1]
+
+
+
+### ✨ Features
 - Invite Tracking: Keep tabs on your server’s invites effortlessly.
 - Giveaway Commands: Create and manage giveaways to engage your community and encourage participation.
 - Avatar Commands: Easily retrieve and display user avatars/banners.
@@ -75,15 +85,15 @@ Pyron os a powerful Discord bot designed specifically for invite tracking! Unlik
   <img src="https://github.com/user-attachments/assets/6791c31d-1a62-41b0-b609-09d006b170d8" alt="Alternativtext" width="200"/>
 </div>
 
-# Getting Started
-## Self Hosting requirements
+# ✅ Getting Started
+### Self Hosting requirements
 
 Before you start, make sure to install the necessary dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
-### Installation
+### Self Hosting Installation
 
 1. **Install Requirements**:
    Ensure you have Python installed, then install the necessary dependencies by running:
