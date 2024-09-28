@@ -1,12 +1,13 @@
 [![Discord](https://img.shields.io/discord/1287837829711528019?label=Discord&logo=discord&style=for-the-badge)](https://discord.gg/TmZrJs3bTz)
 [![Bot Invite](https://img.shields.io/badge/Invite%20Bot-7289DA?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/oauth2/authorize?client_id=1088751762401398865&scope=bot&permissions=268495982)
+![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/levox00/Discord-Pyron-Bot/total?style=for-the-badge&label=%F0%9F%93%A5Downloads&labelColor=green&color=gray)
 [![GitHub stars](https://img.shields.io/badge/⭐%20Stars-2%2F5-yellow?style=for-the-badge)](https://github.com/levox00/Discord-Pyron-Bot/stargazers)
 [![Top Language](https://img.shields.io/badge/Top%20Language-Python-blue?style=for-the-badge&logo=python&logoColor=white)](https://github.com/{username}/{repository})
-[![💙 Contributors](https://img.shields.io/github/contributors/levox00/Discord-Pyron-Bot?style=for-the-badge&color=blue)](https://github.com/levox00/Discord-Pyron-Bot/graphs/contributors)
+[![Contributors](https://img.shields.io/github/contributors/levox00/Discord-Pyron-Bot?style=for-the-badge&color=blue&label=💙%20Contributors)](https://github.com/levox00/Discord-Pyron-Bot/graphs/contributors)
 
 
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/ec8593df-1b32-4882-8885-d8064fe81449" alt="image" width="500"/>
+  <img src="https://github.com/user-attachments/assets/ec8593df-1b32-4882-8885-d8064fe81449" alt="image" width="300"/>
 </div>
 
 
@@ -18,25 +19,33 @@
   </a>
 </h1>
 
-
-
-<p align="center">
-  <a href="https://discord.gg/TmZrJs3bTz">
-    <img src="https://discordapp.com/api/guilds/1287837829711528019/widget.png?style=shield" alt="Discord Server">
-  </a>
-  <a href="https://github.com/levox00/Discord-InviteTracker-Bot">
-    <img src="https://img.shields.io/github/stars/levox00/Discord-Pyron-Bot?style=shield&color=%23607dff" alt="GitHub Repo stars">
-  </a>
-  <a href="#">
-    <img src="https://img.shields.io/badge/GOAL-5%20Stars-green?style=shield" alt="GOAL">
-  </a>
-  <a>
-    <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/levox00/Discord-Pyron-Bot">
-  </a>
-  <a href="https://github.com/levox00/Discord-InviteTracker-Bot">
-    <img alt="GitHub Downloads (all assets, all releases)" src="https://img.shields.io/github/downloads/levox00/Discord-Pyron-Bot/total">
-  </a>
-</p>
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#overview">Overview</a>
+      <ul>
+        <li><a href="#features">Features</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#self-hosting-requirements">Requirements</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#command-usage">Usage of cogs commands</a>
+    </li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
 
 # Overview
 
@@ -60,20 +69,7 @@ Pyron os a powerful Discord bot designed specifically for invite tracking! Unlik
   <img src="https://github.com/user-attachments/assets/6791c31d-1a62-41b0-b609-09d006b170d8" alt="Alternativtext" width="200"/>
 </div>
 
-
-## Command Usage
-
-With Pyron, you can load, update, or remove commands easily when hosting the bot yourself. Use the following commands to manage your features:
-
-- `py!load` - Load the wanted commands.
-- `py!reload` - Reload the wanted commands for changes.
-- `py!unload` - Unload any unnecessary commands.
-
-  Options:
-  `moderation`, `leaderboard`, `giveaway`, `commands`
-
-<img src=https://github.com/user-attachments/assets/7babc198-a00d-4c0f-96bc-c219a9c97358 loop=infinite/>
-
+# Getting Started
 ## Self Hosting requirements
 
 Before you start, make sure to install the necessary dependencies:
@@ -111,14 +107,31 @@ pip install -r requirements.txt
    - `py!load moderation`
 
 
-## Upd 2.0
+## Command Usage
 
- - Changed database fileformat to .sqlite
- - Added Next and Previous buttons to **leaderboard invites** and **invitelist** command
- - Removed stuff that made bot response slow
- - Made all commands compatible with the new file format
+With Pyron, you can load, update, or remove commands easily when hosting the bot yourself. Use the following commands to manage your features:
 
-<img src="https://github.com/user-attachments/assets/d23b8ddf-2302-40a8-8425-f6a93331e31d?raw=true" alt="alt text" width="200"/>
+- `py!load` - Load the wanted commands.
+- `py!reload` - Reload the wanted commands for changes.
+- `py!unload` - Unload any unnecessary commands.
+
+  Options:
+  `moderation`, `leaderboard`, `giveaway`, `commands`
+
+<img src=https://github.com/user-attachments/assets/7babc198-a00d-4c0f-96bc-c219a9c97358 loop=infinite/>
+
+## Roadmap
+
+### Features
+
+- [x] **Invite Tracking**: Track invites and their usage.
+- [x] **Giveaway Commands**: Basic commands to facilitate giveaways.
+- [x] **Moderation**: Essential moderation commands for server management.
+- [x] **Welcome Messages**: Automated welcome messages for new members.
+- [ ] **More Giveaway Commands**: Additional commands to enhance giveaway functionalities.
+- [ ] **Advanced Moderation Commands**: More sophisticated moderation tools for better control.
+- [ ] **More invite commands**
+> If you have more ideas or suggestions, feel free to propose them under the [Issues](https://github.com/levox00/Discord-Pyron-Bot/issues) section or join our [Discord server](https://discord.gg/TmZrJs3bTz)!
 
 
 #  Commands
