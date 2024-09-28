@@ -43,10 +43,16 @@
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
-
+    <details>
+      <summary>Star History</summary>
+      <h2>Star History</h2>
+      <a href="https://star-history.com/#levox00/Discord-Pyron-Bot&Date&width=100">
+        <img src="https://api.star-history.com/svg?repos=levox00/Discord-Pyron-Bot&type=Date" alt="Star History Chart">
+      </a>
+    </details>
+    
 # Overview
 
 Pyron os a powerful Discord bot designed specifically for invite tracking! Unlike many other bots that charge for premium features, Pyron offers a variety of advanced functionalities completely for free.
@@ -132,6 +138,11 @@ With Pyron, you can load, update, or remove commands easily when hosting the bot
 - [ ] **Advanced Moderation Commands**: More sophisticated moderation tools for better control.
 - [ ] **More invite commands**
 > If you have more ideas or suggestions, feel free to propose them under the [Issues](https://github.com/levox00/Discord-Pyron-Bot/issues) section or join our [Discord server](https://discord.gg/TmZrJs3bTz)!
+
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=levox00/Discord-Pyron-Bot&type=Date)](https://star-history.com/#levox00/Discord-Pyron-Bot&Date&width=100)
 
 
 #  Commands
