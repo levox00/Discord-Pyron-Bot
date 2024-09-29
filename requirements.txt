@@ -1,3 +1,4 @@
 nextcord
 aiofiles
 setuptools
+python-dotenv
