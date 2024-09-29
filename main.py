@@ -13,9 +13,16 @@ import re
 import io
 
 def load_config():
-    with open('config.json', 'r') as f:
+    # Bestimme das Verzeichnis, in dem das aktuelle Skript ausgeführt wird
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    
+    # Erstelle den Pfad zur config.json basierend auf dem Skript-Verzeichnis
+    config_path = os.path.join(script_dir, 'config.json')
+    
+    # Öffne und lade die config.json-Datei
+    with open(config_path, 'r') as f:
         return json.load(f)
-
+    
 config = load_config()
 
 BOT_TOKEN = config["BOT_TOKEN"]
@@ -62,14 +69,6 @@ async def load_json_data(filepath):
     with open(filepath, 'r') as f:
         return json.load(f)
 
-def ensure_dir_exists(directory):
-    if not os.path.exists(directory):
-        os.makedirs(directory)
-
-
-
-
-
 
 
 
@@ -83,16 +82,17 @@ def ensure_dir_exists(directory):
 
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
-invite_codes_dir = os.path.join(script_dir, 'invite-codes')
 invites_dir = os.path.join(script_dir, 'invites')
-if not os.path.exists(invite_codes_dir):
-    os.makedirs(invite_codes_dir)
+cogs_dir = os.path.join(script_dir, "cogs")
+
+if not os.path.exists(cogs_dir):
+    os.makedirs(cogs_dir)
 if not os.path.exists(invites_dir):
     os.makedirs(invites_dir)
 # Funktion zur Verbindung mit der SQLite-Datenbank eines Servers
 
 def get_db_connection(guild_id):
-    db_path = os.path.join(invite_codes_dir, f'{guild_id}_invite-codes.sqlite')
+    db_path = os.path.join(script_dir, 'invites', f'{guild_id}_invites.sqlite')
     conn = sqlite3.connect(db_path)
     return conn
 
@@ -107,23 +107,24 @@ def ensure_invite_codes_table(conn):
     cursor.execute('''
     CREATE TABLE IF NOT EXISTS invite_codes (
         code TEXT PRIMARY KEY,
-        inviter_id INTEGER NOT NULL,
+        inviter_id INTEGER,
         uses_count INTEGER NOT NULL DEFAULT 0
     );
     ''')
     conn.commit()
 
 # Funktion zum Entfernen alter Invite-Codes für einen Server
-def remove_invites_for_guild(conn):
-    cursor = conn.cursor()
-    cursor.execute('DELETE FROM invite_codes')
-    conn.commit()
+
 
 # Funktion zum Hinzufügen neuer Invite-Codes
 def add_invite_code(conn, code, inviter_id, uses_count):
     cursor = conn.cursor()
-    cursor.execute('INSERT INTO invite_codes (code, inviter_id, uses_count) VALUES (?, ?, ?)', (code, inviter_id, uses_count))
-    
+    cursor.execute('''INSERT INTO invite_codes (code, inviter_id, uses_count)
+                      VALUES (?, ?, ?)
+                      ON CONFLICT(code) DO UPDATE SET
+                          inviter_id = excluded.inviter_id,
+                          uses_count = excluded.uses_count''',
+                   (code, inviter_id, uses_count))
     conn.commit()
 
 
@@ -193,12 +194,12 @@ async def on_member_join(member):
         # Hole die Willkommensnachrichteneinstellungen
         server_info_conn = sqlite3.connect('server_settings.sqlite')
         server_info_cursor = server_info_conn.cursor()
-        server_info_cursor.execute(f'SELECT channel_id, welcome_messages, custom_welcome_message_desc, custom_welcome_message_title, custom_welcome_message_img, embed_color, author, author_img_url, author_url FROM "{server_id}"')
+        server_info_cursor.execute(f'SELECT channel_id, welcome_messages, custom_welcome_message_desc, custom_welcome_message_title, custom_welcome_message_img, embed_color, author, author_img_url, author_url, content FROM "{server_id}"')
         settings = server_info_cursor.fetchone()
 
         if settings:
             # print(f"DEBUG: Servereinstellungen gefunden: {settings}")
-            channel_id, welcome_messages_enabled, custom_desc, custom_title, custom_img, embed_color, author, author_img_url, author_url = settings
+            channel_id, welcome_messages_enabled, custom_desc, custom_title, custom_img, embed_color, author, author_img_url, author_url, content = settings
             welcome_messages_enabled = settings[1] in ['True', '1'] # Sicherstellen, dass es ein Boolean ist
 
             channel = guild.get_channel(int(channel_id))
@@ -215,9 +216,11 @@ async def on_member_join(member):
                     embed.set_thumbnail(url=replace_image_variables(custom_img or guild.icon.url, member, guild))
                     embed.set_author(name=replace_text_variables(author or "Pyron", member, inviter_id, guild), url=replace_image_variables(author_url or "https://github.com/levox1/Discord-InviteTracker-Bot", member, guild), icon_url=replace_image_variables(author_img_url or "https://cdn.discordapp.com/avatars/1088751762401398865/e795171c56cce3e8199e228136e77eb9.webp?size=1024&animated=true&width=0&height=256", member, guild))
                     embed.color = int(embed_color, 16)
-                    # print(f"DEBUG: Benutzerdefiniertes Embed erstellt: {embed.to_dict()}")
+                    emb_content = replace_text_variables(content or f"Welcome {member.mention}!", member, inviter_id, guild)
+
+                    # print(f"DEBUG: Custom Embed: {embed.to_dict()}")
                 try:
-                    await channel.send(embed=embed)
+                    await channel.send(embed=embed, content=emb_content)
                     # print("DEBUG: Embed gesendet.")
                 except Exception as e:
                     print(f"ERROR: Fehler beim Senden des Embeds: {e}")
@@ -324,7 +327,7 @@ async def on_member_remove(member):
     guild = member.guild
     print(f"{member.name} has left {guild.name}!")
 
-    conn = get_invite_db_connection(guild.id)
+    conn = get_db_connection(guild.id)
     cursor = conn.cursor()
 
     # Hole alle Einladenden und deren User-IDs
@@ -368,8 +371,8 @@ async def on_invite_create(invite):
     #print(f"New invite created: {invite.code} by {invite.inviter.name}!")
     guild = invite.guild
     # Erstelle den Pfad zur Datenbankdatei
-    codes_dir = os.path.join(base_dir, 'invite-codes')
-    db_path = os.path.join(codes_dir, f"{invite.guild.id}_invite-codes.sqlite")
+    codes_dir = os.path.join(base_dir, 'invites')
+    db_path = os.path.join(codes_dir, f"{invite.guild.id}_invites.sqlite")
 
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
@@ -392,11 +395,11 @@ async def on_guild_join(guild):
     print(f"Bot has been added to {guild.name}!")
 
     # Erstelle das Verzeichnis, falls es nicht existiert
-    codes_dir = os.path.join(base_dir, 'invite-codes')
+    codes_dir = os.path.join(base_dir, 'invites')
     os.makedirs(codes_dir, exist_ok=True)
 
     # Erstelle die Datenbankdatei für die Einladungs-Codes
-    db_path = os.path.join(codes_dir, f"{guild.id}_invite-codes.sqlite")
+    db_path = os.path.join(codes_dir, f"{guild.id}_invites.sqlite")
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
 
@@ -426,36 +429,12 @@ async def on_guild_remove(guild):
     print(f"Bot has been removed from {guild.name}!")
 
     # Pfad zur Einladungs-Codes-Datenbank für den Server
-    invite_codes_db_path = os.path.join(base_dir, 'invite-codes', f"{guild.id}_invite-codes.sqlite")
+    invite_codes_db_path = os.path.join(base_dir, 'invites', f"{guild.id}_invites.sqlite")
     if os.path.exists(invite_codes_db_path):
         os.remove(invite_codes_db_path)
         print(f"Deleted invite codes database for {guild.name}.")
     else:
         print(f"No invite codes database found for {guild.name}.")
-
-    # Pfad zur Einladungsdatenbank für den Server
-    invites_db_path = os.path.join(base_dir, 'invites', f"{guild.id}_invites.sqlite")
-    if os.path.exists(invites_db_path):
-        os.remove(invites_db_path)
-        print(f"Deleted invites database for {guild.name}.")
-    else:
-        print(f"No invites database found for {guild.name}.")
-
-    @nextcord.slash_command(description="View a list with all the commands")
-    async def help(self, interaction: Interaction):
-        embed = nextcord.Embed(
-            title = "Help",
-            description = "This is a list of all commands that are currently available",
-            color=0x7d89ff
-        )
-        embed.add_field(name="General Commands", value="> </help:1287195193463935038> Display this message\n> </avatar:1287490634537635900>\n> </server icon:1287490636986974360> Display the server icon\n> </server stats:1287490636986974360> Display stats about the server")
-        embed.add_field(name="Moderation Commands", value="> </ban:1>, </kick:2>, </timeout:3>", inline=True)
-        embed.add_field(name="Giveaway Commands", value="> </giveaway create:1287195275949244426> Start a giveaway\n> </giveaway reroll:1287195275949244426> Reroll a giveaway", inline=True)
-        embed.add_field(name="Invite Commands", value="> </invites:1287490632679555257> Display the invite stats of a single user\n> </leaderboard invites:1287195195590574170> Display the top 10 inviters\n> </inviter:1287195192033542174> Display who invited a selected user\n > </leaderboard export:1287195195590574170> Export the whole leaderboard\n> </leaderboard replace:1287195195590574170> Import a exported leaderboard file\n> </invitelist:1287195190129332307> Display a list of users someone invited", inline=False)
-        embed.add_field(name="Config Commands", value="> </invrewards:1287195197209444394>, </welcome messages:123>", inline=True)
-        await interaction.response.send_message(embed=embed)
-
-
 
 # Event, das ausgeführt wird, wenn der Bot bereit ist
 @bot.event
@@ -472,16 +451,13 @@ async def on_ready():
         # Sicherstellen, dass die Invite-Codes-Tabelle existiert
         ensure_invite_codes_table(conn)
 
-        # Entferne alle alten Invite-Codes für diesen Server
-        remove_invites_for_guild(conn)
-
         # Aktuelle Invite-Codes für den Server abrufen
         invites = await guild.invites()
 
         # Die aktuellen Invite-Codes in die Datenbank einfügen
         for invite in invites:
             code = invite.code
-            inviter_id = invite.inviter.id
+            inviter_id = invite.inviter.id if invite.inviter is not None else None  # Überprüfung, ob inviter None ist
             uses_count = invite.uses
 
             # Neue Invite-Codes zur Datenbank hinzufügen
@@ -492,7 +468,7 @@ async def on_ready():
 
         print(f"Updated invites for guild {guild.name}")
 
-for fn in os.listdir("./cogs"):
+for fn in os.listdir(cogs_dir):
     if fn.endswith(".py"):
         bot.load_extension(f"cogs.{fn[:-3]}")
 

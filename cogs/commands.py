@@ -40,7 +40,8 @@ def create_server_table_if_not_exists(db_path: str, server_id: str):
         embed_color TEXT,
         author TEXT,
         author_img_url TEXT,
-        author_url TEXT
+        author_url TEXT,
+        content TEXT
     )
     """
 
@@ -51,7 +52,7 @@ def create_server_table_if_not_exists(db_path: str, server_id: str):
     conn.commit()
     conn.close()
 
-    print(f"Tabelle '{server_id}' erstellt oder bereits vorhanden.")
+    print(f"Table '{server_id}' made or already existed.")
     pass
 
 class WelcomeMessageButtons(ui.View):
@@ -75,9 +76,9 @@ class GeneralModal(ui.Modal):
         super().__init__("General Setup")
 
         self.add_item(ui.TextInput(label="Channel ID", placeholder="Enter the channel ID", required=True))
-        self.add_item(ui.TextInput(label="Custom Welcome Message Description", placeholder="'[member]'/[inviter]' to mention the new member/inviter.", required=False, max_length=200))
-        self.add_item(ui.TextInput(label="Custom Welcome Message Title", placeholder="Enter custom title", required=False, max_length=50))
-
+        self.add_item(ui.TextInput(label="Custom Welcome Message Description", placeholder="'[member]'/[inviter]' to mention the new member/inviter", required=False, max_length=200))
+        self.add_item(ui.TextInput(label="Custom Welcome Message Title", placeholder="The custom title", required=False, max_length=50))
+        self.add_item(ui.TextInput(label="Custom Message Content", placeholder="The content the embed is attached to", required=False))
     async def callback(self, interaction: Interaction):
         server_id = interaction.guild_id
         db_path = os.path.join(base_dir, "..", "server_settings.sqlite")
@@ -85,6 +86,7 @@ class GeneralModal(ui.Modal):
         channel_id = self.children[0].value
         desc = self.children[1].value if self.children[1].value else None
         title = self.children[2].value if self.children[2].value else None
+        content = self.children[3].value if self.children[3].value else None
 
         # Erstelle die Tabelle falls sie nicht existiert
         create_server_table_if_not_exists(db_path, server_id)
@@ -93,31 +95,32 @@ class GeneralModal(ui.Modal):
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
 
-        cursor.execute(f'SELECT channel_id, custom_welcome_message_desc, custom_welcome_message_title FROM "{server_id}" LIMIT 1')
+        cursor.execute(f'SELECT channel_id, custom_welcome_message_desc, custom_welcome_message_title, content FROM "{server_id}" LIMIT 1')
         result = cursor.fetchone()
 
         current_channel_id =result[0] if result else None
         current_desc = result[1] if result else None
         current_title = result[2] if result else None
+        current_content = result[3] if result else None
 
         # Werte aus den Eingaben holen oder bestehende Werte beibehalten
         channel_id = self.children[0].value if self.children[0].value else current_channel_id
         desc = self.children[1].value if self.children[1].value else current_desc
         title = self.children[2].value if self.children[2].value else current_title
-
+        content = self.children[3].value if self.children[3].value else current_content
         if result:
             # Update des bestehenden Eintrags
             cursor.execute(f"""
             UPDATE "{server_id}"
-            SET channel_id = ?, custom_welcome_message_desc = ?, custom_welcome_message_title = ?
+            SET channel_id = ?, custom_welcome_message_desc = ?, custom_welcome_message_title = ?, content = ?
             WHERE channel_id = ?
-            """, (channel_id, desc, title, channel_id))
+            """, (channel_id, desc, title, content, channel_id))
         else:
             # Insert eines neuen Eintrags
             cursor.execute(f"""
-            INSERT INTO "{server_id}" (channel_id, custom_welcome_message_desc, custom_welcome_message_title)
-            VALUES (?, ?, ?)
-            """, (channel_id, desc, title))
+            INSERT INTO "{server_id}" (channel_id, custom_welcome_message_desc, custom_welcome_message_title, content)
+            VALUES (?, ?, ?, ?)
+            """, (channel_id, desc, title, content))
 
         # Änderungen speichern und Datenbankverbindung schließen
         conn.commit()

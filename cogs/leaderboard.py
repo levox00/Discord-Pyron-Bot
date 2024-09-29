@@ -11,10 +11,7 @@ import aiofiles
 import io
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
-invite_codes_dir = os.path.join(script_dir, "..", 'invite-codes')
 invites_dir = os.path.join(script_dir, "..", 'invites')
-if not os.path.exists(invite_codes_dir):
-    os.makedirs(invite_codes_dir)
 if not os.path.exists(invites_dir):
     os.makedirs(invites_dir)
 
@@ -26,11 +23,6 @@ def get_invite_db_connection(guild_id):
     db_path = os.path.join(script_dir, "..",  'invites', f'{guild_id}_invites.sqlite')
     conn = sqlite3.connect(db_path)
     return conn
-
-def save_role_rewards(server_id, role_rewards):
-    file_path = os.path.join(os.path.dirname(__file__), "..",  "invite_roles", f"{server_id}.json")
-    with open(file_path, 'w') as f:
-        json.dump(role_rewards, f, indent=4)
 
 def ensure_dir_exists(directory):
     if not os.path.exists(directory):
