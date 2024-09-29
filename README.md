@@ -80,7 +80,7 @@ If you want to support this project you can do so by contrubting in any way or [
 - Server Stats: Get real-time statistics about your server, including member counts and activity levels.
 - Moderation Tools: Manage your server effectively with commands for banning, kicking, and muting members.
 - Flexible Hosting: If you choose to self-host, you have the freedom to customize Pyron's functionalities. You can easily enable or disable leaderboard commands, giveaways, and more according to your preferences.
-
+- Welcome messages: Send messages to a specific channel whenever someone joins your server. Fully customizable embed & embed content.
 
 <div style="display: flex; align-items: center; justify-content: center;">
   <div style="margin-right: 20px;">
