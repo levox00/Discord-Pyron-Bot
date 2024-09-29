@@ -1,6 +1,6 @@
 import nextcord
 from nextcord import Interaction, ButtonStyle
-from nextcord.ext import commands
+from nextcord.ext import commands, tasks
 from nextcord.ui import Button, View
 import aiofiles
 import sqlite3
