@@ -440,7 +440,9 @@ async def on_guild_remove(guild):
 @bot.event
 async def on_ready():
     print(f"Logged in as {bot.user}!")
-
+    await bot.change_presence(
+        activity=nextcord.Game(name="/help | Free open source bot!"),
+    )
     # Über alle Server iterieren, in denen der Bot ist
     for guild in bot.guilds:
         print(f"Updating invite codes for guild: {guild.name} ({guild.id})")
