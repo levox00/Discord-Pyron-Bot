@@ -1,6 +1,5 @@
 [![Discord](https://img.shields.io/discord/1287837829711528019?label=Discord&logo=discord&style=for-the-badge)](https://discord.gg/TmZrJs3bTz)
 [![Bot Invite](https://img.shields.io/badge/Invite%20Bot-7289DA?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/oauth2/authorize?client_id=1088751762401398865&scope=bot&permissions=268495982)
-![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/levox00/Discord-Pyron-Bot/total?style=for-the-badge&label=%F0%9F%93%A5Downloads&labelColor=green&color=gray)
 [![GitHub stars](https://img.shields.io/badge/⭐%20Stars-3%2F5-yellow?style=for-the-badge)](https://github.com/levox00/Discord-Pyron-Bot/stargazers)
 [![Top Language](https://img.shields.io/badge/Top%20Language-Python-blue?style=for-the-badge&logo=python&logoColor=white)](https://github.com/levox00/Discord-Pyron-Bot)
 [![Contributors](https://img.shields.io/github/contributors/levox00/Discord-Pyron-Bot?style=for-the-badge&color=blue&label=💙%20Contributors)](https://github.com/levox00/Discord-Pyron-Bot/graphs/contributors)
