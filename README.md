@@ -100,6 +100,8 @@ pip install -r requirements.txt
 ```
 ### Self Hosting Installation
 
+Replit template: [here](https://replit.com/@leander8/Discord-Pyron-Bot?v=1)
+
 1. **Install Requirements**:
    Ensure you have Python installed, then install the necessary dependencies by running:
    ```bash
