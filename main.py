@@ -436,6 +436,12 @@ async def on_guild_remove(guild):
     else:
         print(f"No invite codes database found for {guild.name}.")
 
+@tasks.loop(minutes=1)
+async def send_ping():
+    channel = bot.get_channel(1290045565501177908)
+    if channel:
+        await channel.send("still online...")
+
 # Event, das ausgeführt wird, wenn der Bot bereit ist
 @bot.event
 async def on_ready():
@@ -443,6 +449,7 @@ async def on_ready():
     await bot.change_presence(
         activity=nextcord.Game(name="/help | Free open source bot!"),
     )
+    send_ping.start()
     # Über alle Server iterieren, in denen der Bot ist
     for guild in bot.guilds:
         print(f"Updating invite codes for guild: {guild.name} ({guild.id})")
