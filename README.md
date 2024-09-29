@@ -1,39 +1,79 @@
+[![Discord](https://img.shields.io/discord/1287837829711528019?label=Discord&logo=discord&style=for-the-badge)](https://discord.gg/TmZrJs3bTz)
+[![Bot Invite](https://img.shields.io/badge/Invite%20Bot-7289DA?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/oauth2/authorize?client_id=1088751762401398865&scope=bot&permissions=268495982)
+![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/levox00/Discord-Pyron-Bot/total?style=for-the-badge&label=%F0%9F%93%A5Downloads&labelColor=green&color=gray)
+[![GitHub stars](https://img.shields.io/badge/⭐%20Stars-3%2F5-yellow?style=for-the-badge)](https://github.com/levox00/Discord-Pyron-Bot/stargazers)
+[![Top Language](https://img.shields.io/badge/Top%20Language-Python-blue?style=for-the-badge&logo=python&logoColor=white)](https://github.com/levox00/Discord-Pyron-Bot)
+[![Contributors](https://img.shields.io/github/contributors/levox00/Discord-Pyron-Bot?style=for-the-badge&color=blue&label=💙%20Contributors)](https://github.com/levox00/Discord-Pyron-Bot/graphs/contributors)
+
+
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/5a6e0f73-7c59-4ceb-8abc-04f13c1b21db" alt="image" width="900"/>
+  <img src="https://github.com/user-attachments/assets/ec8593df-1b32-4882-8885-d8064fe81449" alt="image" width="300"/>
 </div>
 
 
 
 <h1 align="center" style="display: flex; align-items: center; justify-content: center;">
-  Pyron - Invite Tracking, Giveaway Discord Bot
+  Pyron - Invite Tracking, Giveaway, Welcome messages and much more
   <a href="https://discord.com/oauth2/authorize?client_id=1088751762401398865&scope=bot&permissions=268495982" style="margin-left: 10px; margin-bottom: 0px;">
-    <img src="https://github.com/levox00/discord-InviteTracker-Giveaway-Bot/blob/main/images/Bt2.png" width="150" alt="Invite Bot" />
+    <img src="https://github.com/user-attachments/assets/605c0c96-62b8-4fcd-9f77-724914ba3608" width="150" alt="Invite Bot" />
   </a>
 </h1>
 
-
-
-
-<p align="center">
-  <a href="https://discord.gg/TmZrJs3bTz">
-    <img src="https://discordapp.com/api/guilds/1287837829711528019/widget.png?style=shield" alt="Discord Server">
-  </a>
-  <a href="https://github.com/levox00/Discord-InviteTracker-Bot">
-    <img src="https://img.shields.io/github/stars/levox00/Discord-InviteTracker-Bot?style=shield&color=%23607dff" alt="GitHub Repo stars">
-  </a>
-  <a href="#">
-    <img src="https://img.shields.io/badge/GOAL-2%20Stars-green?style=shield" alt="GOAL">
-  </a>
-  <a href="https://github.com/levox00/Discord-InviteTracker-Bot">
-    <img src="https://img.shields.io/github/downloads/levox00/Discord-InviteTracker-Bot/total.svg?style=shield" alt="Monthly Downloads">
-  </a>
-</p>
-
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#overview">Overview</a>
+      <ul>
+        <li><a href="#-support-this-project">Support Project</a></li>
+      </ul>
+      <ul>
+        <li><a href="#-features">Features</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#-getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#self-hosting-requirements">Requirements</a></li>
+        <li><a href="#self-hosting-installation">Installation</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#-command-usage">Usage of cogs commands</a>
+    </li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#-star-history">Star History</a></li>
+    <li><a href="#%EF%B8%8F-command-imagess">Command images</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#-contact">Contact</a></li>
+  </ol>
+</details>
+    <details>
+      <summary>Star History</summary>
+      <h2>Star History</h2>
+      <a href="https://star-history.com/#levox00/Discord-Pyron-Bot&Date&width=100">
+        <img src="https://api.star-history.com/svg?repos=levox00/Discord-Pyron-Bot&type=Date" alt="Star History Chart">
+      </a>
+    </details>
+    
 # Overview
 
-Pyron os a powerful Discord bot designed specifically for invite tracking! Unlike many other bots that charge for premium features, Pyron offers a variety of advanced functionalities completely for free.
 
-### Features
+Pyron is a powerful Discord bot made especially for invite tracking! This bot serves as an alternative to other popular invite trackers that you can either host yourself or use the 24/7 hosted version. Pyron offers a wide array of useful features that can be utilized together, such as the **invite role** along with the required roles for ``/giveaways create``. This bot also includes commands like ``/server stats``, ``/avatar``, and ``/purge`` <sup>(soon)</sup>, among others!
+
+Vote for more features: [here](https://www.menti.com/alm2tenbzzjg)
+
+### 🤝 Support This Project
+
+If you want to support this project you can do so by contrubting in any way or [sponsoring](https://github.com/levox00/Discord-Pyron-Bot/?sponsor=1).
+
+<sub>**You can also support by simply staring this repository!**</sub>
+
+
+
+### ✨ Features
 - Invite Tracking: Keep tabs on your server’s invites effortlessly.
 - Giveaway Commands: Create and manage giveaways to engage your community and encourage participation.
 - Avatar Commands: Easily retrieve and display user avatars/banners.
@@ -48,30 +88,18 @@ Pyron os a powerful Discord bot designed specifically for invite tracking! Unlik
     <p><strong>Why does Pyron need X permissions and how can I toggle them off?</strong></p>
     <p><a href="permissions.md">Read more here</a></p>
   </div>
-  <img src="https://github.com/user-attachments/assets/6a1e2f32-6bba-4e73-99d7-88c787cc566f" alt="Alternativtext" width="200"/>
+  <img src="https://github.com/user-attachments/assets/6791c31d-1a62-41b0-b609-09d006b170d8" alt="Alternativtext" width="200"/>
 </div>
 
-## Command Usage
-
-With Pyron, you can load, update, or remove commands easily when hosting the bot yourself. Use the following commands to manage your features:
-
-- `py!load` - Load the wanted commands.
-- `py!reload` - Reload the wanted commands for changes.
-- `py!unload` - Unload any unnecessary commands.
-
-  Options:
-  `moderation`, `leaderboard`, `giveaway`, `commands`
-
-<img src=https://github.com/user-attachments/assets/1d855880-d4d3-4caf-80c8-f4b18a64b908 loop=infinite/>
-
-## Self Hosting requirements
+# ✅ Getting Started
+### Self Hosting requirements
 
 Before you start, make sure to install the necessary dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
-### Installation
+### Self Hosting Installation
 
 1. **Install Requirements**:
    Ensure you have Python installed, then install the necessary dependencies by running:
@@ -101,49 +129,59 @@ pip install -r requirements.txt
    - `py!load moderation`
 
 
-## Upd 2.0
+## 📝 Command Usage
 
- - Changed database fileformat to .sqlite
- - Added Next and Previous buttons to **leaderboard invites** and **invitelist** command
- - Removed stuff that made bot response slow
- - Made all commands compatible with the new file format
+With Pyron, you can load, update, or remove commands easily when hosting the bot yourself. Use the following commands to manage your features:
 
-<img src="https://github.com/user-attachments/assets/7d669ccc-8bb6-4b1f-8fe1-ce858581d3bb?raw=true" alt="alt text" width="200"/>
+- `py!load` - Load the wanted commands.
+- `py!reload` - Reload the wanted commands for changes.
+- `py!unload` - Unload any unnecessary commands.
+
+  Options:
+  `moderation`, `leaderboard`, `giveaway`, `commands`
+
+<img src=https://github.com/user-attachments/assets/7babc198-a00d-4c0f-96bc-c219a9c97358 loop=infinite/>
+
+## Roadmap
+
+### Features
+
+- [x] **Invite Tracking**: Track invites and their usage.
+- [x] **Giveaway Commands**: Basic commands to facilitate giveaways.
+- [x] **Moderation**: Essential moderation commands for server management.
+- [x] **Welcome Messages**: Automated welcome messages for new members.
+- [ ] **More Giveaway Commands**: Additional commands to enhance giveaway functionalities.
+- [ ] **Advanced Moderation Commands**: More sophisticated moderation tools for better control.
+- [ ] **More invite commands**
+> If you have more ideas or suggestions, feel free to propose them under the [Issues](https://github.com/levox00/Discord-Pyron-Bot/issues) section or join our [Discord server](https://discord.gg/TmZrJs3bTz)!
+
+
+## ⭐ Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=levox00/Discord-Pyron-Bot&type=Date)](https://star-history.com/#levox00/Discord-Pyron-Bot&Date&width=100)
+
+
+## 🖼️ Command imagess:
+
+<img src="https://github.com/user-attachments/assets/5b8c5eb5-4c4e-4be3-a5c0-be1610d17f93" alt="1" width="40%"/>
 
 
 
-## Commands
+<img src="https://github.com/user-attachments/assets/12e10894-8a0e-4c5a-9e52-fa6aaade73d8" alt="2" width="40%"/>
 
-### Help Command
-<img src="https://github.com/levox00/discord-InviteTracker-Giveaway-Bot/blob/main/images/help.png?raw=true" alt="alt text" width="400"/>
+<img src="https://github.com/user-attachments/assets/7ecc9b93-a9eb-43a1-93a2-01ea4d89f423" alt="3" width="40%"/>
 
-### Giveaway Create Command
-<img src="https://github.com/levox00/discord-InviteTracker-Giveaway-Bot/blob/main/images/gw-create.png?raw=true" alt="alt text" width="400"/>
+<img src="https://github.com/user-attachments/assets/18f33de2-1203-4ef5-ab05-29a339a75346" alt="4" width="40%"/>
 
-### Giveaway Reroll Command
-<img src="https://github.com/levox00/discord-InviteTracker-Giveaway-Bot/blob/main/images/gw-reroll.png?raw=true" alt="alt text" width="400"/>
+<img src="https://github.com/user-attachments/assets/84c449b4-ccb5-4f5e-9ef2-3b3e417bf325" alt="4" width="40%"/>
 
-### Leaderboard Invites
-<img src="https://github.com/levox00/discord-InviteTracker-Giveaway-Bot/blob/main/images/leaderboard.png?raw=true" alt="alt text" width="400"/>
+<img src="https://github.com/user-attachments/assets/6206185c-77aa-45ec-b8b8-48bf5f4be769" alt="5" width="40%"/>
 
-### User Invites
-<img src="https://github.com/levox00/discord-InviteTracker-Giveaway-Bot/blob/main/images/user-invites.png?raw=true" alt="alt text" width="400"/>
+<img src="https://github.com/user-attachments/assets/f0ffa5f2-d336-49eb-a5e4-0dd3840aba48" alt="6" width="40%"/>
 
-### Inviter Command
-<img src="https://github.com/levox00/discord-InviteTracker-Giveaway-Bot/blob/main/images/inviter.png?raw=true" alt="alt text" width="400"/>
+<img src="https://github.com/user-attachments/assets/0cee06ce-49e7-4beb-b17a-fe105dd197c5" alt="7" width="40%"/>
 
-### Invitelists Command
-<img src="https://github.com/levox00/discord-InviteTracker-Giveaway-Bot/blob/main/images/invlist.png?raw=true" alt="alt text" width="400"/>
+### 👤 Contact
 
-### Leaderboard Export Command
-<img src="https://github.com/levox00/discord-InviteTracker-Giveaway-Bot/blob/main/images/export.png?raw=true" alt="alt text" width="400"/>
-
-### Leaderboard Replace/Import Command
-<img src="https://github.com/levox00/discord-InviteTracker-Giveaway-Bot/blob/main/images/replace.png?raw=true" alt="alt text" width="400"/>
-
-### Other commands
-``/avatar`` Displays someones avatar (Profile/Banner) -> [EXAMPLE](https://github.com/levox00/discord-InviteTracker-Giveaway-Bot/blob/main/images/banner.png?raw=True)**
-
-``/server icon`` display the server icon [EXAMPLE](https://github.com/levox00/discord-InviteTracker-Giveaway-Bot/blob/main/images/servericon.png?raw=True)
-
-``/server stats`` display server stats -> [EXAMPLE](https://github.com/levox00/discord-InviteTracker-Giveaway-Bot/blob/main/images/stats.png?raw=True)
+Trough discord:
+[Discord server](https://discord.gg/TmZrJs3bTz) or [direct message me on discord](https://discord.com/users/1025125432825237514)

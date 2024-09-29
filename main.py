@@ -429,9 +429,9 @@ async def on_guild_remove(guild):
     print(f"Bot has been removed from {guild.name}!")
 
     # Pfad zur Einladungs-Codes-Datenbank für den Server
-    invite_codes_db_path = os.path.join(base_dir, 'invites', f"{guild.id}_invites.sqlite")
-    if os.path.exists(invite_codes_db_path):
-        os.remove(invite_codes_db_path)
+    invites_db_path = os.path.join(base_dir, 'invites', f"{guild.id}_invites.sqlite")
+    if os.path.exists(invites_db_path):
+        os.remove(invites_db_path)
         print(f"Deleted invite codes database for {guild.name}.")
     else:
         print(f"No invite codes database found for {guild.name}.")
