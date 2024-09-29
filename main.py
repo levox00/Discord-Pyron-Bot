@@ -11,7 +11,7 @@ from datetime import datetime, timedelta, timezone
 import asyncio
 import re
 import io
-
+from dotenv import load_dotenv
 def load_config():
     # Bestimme das Verzeichnis, in dem das aktuelle Skript ausgeführt wird
     script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -25,7 +25,7 @@ def load_config():
     
 config = load_config()
 
-BOT_TOKEN = config["BOT_TOKEN"]
+BOT_TOKEN = os.getenv('DISCORD_TOKEN')
 OWNER = int(config["OWNER_ID"])
 
 intents = nextcord.Intents.default()
