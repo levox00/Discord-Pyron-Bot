@@ -114,7 +114,7 @@ class GeneralModal(ui.Modal):
             UPDATE "{server_id}"
             SET channel_id = ?, custom_welcome_message_desc = ?, custom_welcome_message_title = ?, content = ?
             WHERE channel_id = ?
-            """, (channel_id, desc, title, content, channel_id))
+            """, (channel_id, desc, title, content, current_channel_id))
         else:
             # Insert eines neuen Eintrags
             cursor.execute(f"""
@@ -165,8 +165,9 @@ class AuthorModal(ui.Modal):
             # Update des bestehenden Eintrags
             cursor.execute(f"""
             UPDATE "{server_id}"
-            SET author = ?, author_img_url = ?, author_url = ?
-            """, (author, author_img_url, author_url))
+            SET author = ?, author_img_url = ?, author_url = ? 
+            WHERE author = ?
+            """, (author, author_img_url, author_url, current_author))
         else:
             # Insert eines neuen Eintrags
             cursor.execute(f"""
@@ -219,8 +220,8 @@ class OthersModal(ui.Modal):
                 print(f"DEBUG: Updating existing entry for {server_id} with embed_color: {embed_color} and embed_thumbnail: {embed_thumbnail}")
                 cursor.execute(f"""
                 UPDATE "{server_id}"
-                SET embed_color = ?, custom_welcome_message_img = ?
-                """, (embed_color, embed_thumbnail))
+                SET embed_color = ?, custom_welcome_message_img = ? WHERE embed_color = ?
+                """, (embed_color, embed_thumbnail, current_embed_color))
             else:
                 # Insert eines neuen Eintrags
                 print(f"DEBUG: Inserting new entry for {server_id} with embed_color: {embed_color} and embed_thumbnail: {embed_thumbnail}")
