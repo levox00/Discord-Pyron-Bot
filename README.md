@@ -151,6 +151,7 @@ With Pyron, you can load, update, or remove commands easily when hosting the bot
 - [x] **Giveaway Commands**: Basic commands to facilitate giveaways.
 - [x] **Moderation**: Essential moderation commands for server management.
 - [x] **Welcome Messages**: Automated welcome messages for new members.
+- [ ] **Join roles**: Add roles automatically to new members. (2 max)
 - [ ] **More Giveaway Commands**: Additional commands to enhance giveaway functionalities.
 - [ ] **Advanced Moderation Commands**: More sophisticated moderation tools for better control.
 - [ ] **More invite commands**
