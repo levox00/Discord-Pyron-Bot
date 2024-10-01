@@ -26,6 +26,7 @@ def load_config():
 config = load_config()
 
 BOT_TOKEN = os.getenv('DISCORD_TOKEN')
+print(f"Testing bot token {BOT_TOKEN}")
 OWNER = int(config["OWNER_ID"])
 
 intents = nextcord.Intents.default()
