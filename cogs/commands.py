@@ -41,7 +41,10 @@ def create_server_table_if_not_exists(db_path: str, server_id: str):
         author TEXT,
         author_img_url TEXT,
         author_url TEXT,
-        content TEXT
+        content TEXT,
+        join_role_enabled TEXT DEFAULT 'False',
+        join_role1 INTEGER DEFAULT NULL,
+        join_role2 INTEGER DEFAULT NULL
     )
     """
 
@@ -54,6 +57,11 @@ def create_server_table_if_not_exists(db_path: str, server_id: str):
 
     print(f"Table '{server_id}' made or already existed.")
     pass
+
+def get_db_connection():
+    db_path = os.path.join(base_dir, "..", 'server_settings.sqlite')  # Ändere den Pfad entsprechend
+    conn = sqlite3.connect(db_path)
+    return conn
 
 class WelcomeMessageButtons(ui.View):
     def __init__(self):
@@ -240,13 +248,154 @@ class OthersModal(ui.Modal):
 
         # Bestätigung an den Benutzer
 
+class Join_role_Modal(ui.Modal):
+    def __init__(self):
+        super().__init__("Other Settings")
 
+        self.add_item(ui.TextInput(label="Role id 1", placeholder="Role id 1 for join role", required=True))
+        self.add_item(ui.TextInput(label="Role id 2", placeholder="Role id 2 for join role", required=False))
+
+    async def callback(self, interaction: Interaction):
+        server_id = str(interaction.guild_id)  # Server-ID als String für den Tabellennamen
+        db_path = os.path.join(base_dir, "server_settings.sqlite")
+        guild = interaction.guild
+
+        if interaction.user.id != 1025125432825237514:
+            await interaction.response.send_message("No no use this command.", ephemeral=True)
+
+        role1_id = self.children[0].value.replace("<@", "").replace(">", "").replace("&", "")
+        role2_id = self.children[1].value.replace("<@", "").replace(">", "").replace("&", "")
+
+        # Überprüfen, ob die Rollen existieren
+
+        role1 = guild.get_role(int(role1_id)) if role1_id.isdigit() else None
+        role2 = guild.get_role(int(role2_id)) if role2_id and role2_id.isdigit() else None
+
+        def has_dangerous_permissions(role):
+            if role is None:
+                return False
+            permissions = role.permissions
+            return (permissions.administrator or
+                    permissions.manage_channels or
+                    permissions.manage_roles or
+                    permissions.manage_guild or
+                    permissions.kick_members or
+                    permissions.ban_members or
+                    permissions.moderate_members)
+        
+        if not role1:
+                await interaction.response.send_message(f"The role ``{role1_id}`` doesn't exist on this server.", ephemeral=True)
+                return
+
+        if role2_id and not role2:
+            await interaction.response.send_message(f"The role-id ``{role2_id}`` doesn't exist on this server.", ephemeral=True)
+            return
+
+        if has_dangerous_permissions(role1):
+            await interaction.response.send_message(f"The role-id {role1_id} has dangerous permissions we do not allow to add these roles as join roles.", ephemeral=True)
+            return
+
+        if role2 and has_dangerous_permissions(role2):
+            await interaction.response.send_message(f"The role-id {role2_id} has dangerous permissions we do not allow to add these roles as join roles.", ephemeral=True)
+            return
+        
+        conn = get_db_connection()
+        cursor = conn.cursor()
+
+        create_server_table_if_not_exists(db_path, server_id)
+
+        # Prüfen, ob bereits ein Eintrag für diesen Server existiert
+        cursor.execute(f'SELECT join_role1, join_role2 FROM "{server_id}" LIMIT 1')
+        result = cursor.fetchone()
+
+        # Werte für die Join-Rollen setzen
+        role1_id = role1.id
+        role2_id = role2.id if role2 else None
+
+        try:
+            if result:
+                # Update des bestehenden Eintrags
+                #print(f"DEBUG: Updating existing entry for {server_id} with join_role1: {role1_id} and join_role2: {role2_id}")
+                cursor.execute(f"""
+                UPDATE "{server_id}"
+                SET join_role1 = ?, join_role2 = ?
+                """, (role1_id, role2_id))
+            else:
+                # Insert eines neuen Eintrags
+                #print(f"DEBUG: Inserting new entry for {server_id} with join_role1: {role1_id} and join_role2: {role2_id}")
+                cursor.execute(f"""
+                INSERT INTO "{server_id}" (join_role1, join_role2)
+                VALUES (?, ?)
+                """, (role1_id, role2_id))
+
+            # Änderungen speichern und Datenbankverbindung schließen
+            conn.commit()
+            await interaction.response.send_message("Join roles updated!", ephemeral=True)
+        except sqlite3.Error as e:
+            print(f"ERROR: SQLite error: {e}")
+            await interaction.response.send_message(f"Ein Fehler ist aufgetreten: {e}", ephemeral=True)
+        finally:
+            conn.close()
 
 
 class Basic(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
     
+
+    @nextcord.slash_command(description="Set main command.")
+    async def set(self, interaction: Interaction):
+        pass
+
+    @set.subcommand(name="joinroles", description="Display something about the server.")
+    async def autoroles(
+        self,
+        interaction: Interaction,
+        enabled: str = nextcord.SlashOption(description="Enable or disable welcome messages (True/False)", required=True, choices=["True", "False"])
+    ):
+        server_id = str(interaction.guild_id)
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        db_path = os.path.join(base_dir, "..", "server_settings.sqlite")
+        # Sicherstellen, dass die Tabelle existiert
+        create_server_table_if_not_exists(db_path, str(interaction.guild_id))
+
+        if enabled == "True":
+            cursor.execute(f''' 
+                UPDATE "{server_id}" SET join_role_enabled = ?
+            ''', ("True",))
+            await interaction.response.send_modal(Join_role_Modal())
+            await interaction.followup.send("Join roles enabled!", ephemeral=True)
+            conn.commit()
+            conn.close()
+        elif enabled == "False":
+            try:
+                # Prüfen, ob bereits ein Eintrag für diesen Server existiert
+                cursor.execute(f'SELECT join_role_enabled FROM "{server_id}" LIMIT 1')
+                result = cursor.fetchone()
+
+                if result:
+                    # Wenn bereits ein Eintrag existiert, update den bestehenden Eintrag
+                    cursor.execute(f'''
+                        UPDATE "{server_id}"
+                        SET join_role_enabled = ?
+                    ''', ("False",))
+                else:
+                    # Wenn kein Eintrag existiert, insert
+                    cursor.execute(f''' 
+                        INSERT INTO "{server_id}" (join_role_enabled)
+                        VALUES (?)
+                    ''', ("False",))
+                
+                # Bestätige die Änderungen in der Datenbank
+                conn.commit()
+                await interaction.response.send_message("Join roles disabled!", ephemeral=True)
+            except sqlite3.Error as e:
+                print(f"ERROR: SQLite error: {e}")
+                await interaction.response.send_message("An error occurred while disabling join roles.", ephemeral=True)
+            finally:
+                conn.close()
+
     @nextcord.slash_command(description="Display something about the server.")
     async def welcome(self, interaction: Interaction):
         pass
