@@ -191,8 +191,10 @@ async def on_member_join(member):
     if inviter_id:
         print(f"DEBUG: Einladender ID gefunden: {inviter_id}")
 
-        # Hole die Willkommensnachrichteneinstellungen
-        server_info_conn = sqlite3.connect('server_settings.sqlite')
+        current_directory = os.path.dirname(os.path.abspath(__file__))
+        settings_path = os.path.join(current_directory, 'server_settings.sqlite')
+
+        server_info_conn = sqlite3.connect(settings_path)
         server_info_cursor = server_info_conn.cursor()
         server_info_cursor.execute(f'SELECT channel_id, welcome_messages, custom_welcome_message_desc, custom_welcome_message_title, custom_welcome_message_img, embed_color, author, author_img_url, author_url, content FROM "{server_id}"')
         settings = server_info_cursor.fetchone()
@@ -202,9 +204,11 @@ async def on_member_join(member):
             channel_id, welcome_messages_enabled, custom_desc, custom_title, custom_img, embed_color, author, author_img_url, author_url, content = settings
             welcome_messages_enabled = settings[1] in ['True', '1'] # Sicherstellen, dass es ein Boolean ist
 
-            channel = guild.get_channel(int(channel_id))
-
-            if channel:
+            if channel_id is not None:
+                channel = guild.get_channel(int(channel_id))
+            else:
+                channel = None
+            if channel is not None:
                 # print(f"DEBUG: Kanal mit ID {channel_id} gefunden: {channel.name}")
                 if welcome_messages_enabled:
                     # Benutzerdefiniertes Embed erstellen
@@ -286,11 +290,12 @@ async def on_member_join(member):
             #print(f"DEBUG: Invite Count for {inviter_id}: {invite_count}")
 
             # Verbindung zur server_infos.sqlite herstellen
-            server_info_conn = sqlite3.connect('server_settings.sqlite')
+
+            server_info_conn = sqlite3.connect(settings_path)
             server_info_cursor = server_info_conn.cursor()
 
             # Hole die Rollen-Belohnungen aus der server_id-Tabelle
-            server_info_cursor.execute(f'SELECT role1_id, req_invites1, role2_id, req_invites2, role3_id, req_invites3, role4_id, req_invites4, role5_id, req_invites5 FROM "{server_id}"')
+            server_info_cursor.execute(f'SELECT role1_id, req_invites1, role2_id, req_invites2, role3_id, req_invites3, role4_id, req_invites4, role5_id, req_invites5  FROM "{server_id}"')
             rewards = server_info_cursor.fetchone()
 
             if rewards:
@@ -310,8 +315,28 @@ async def on_member_join(member):
                                 await inviter.add_roles(role)
                                 #print(f"DEBUG: Role {role.name} was added to {inviter.name} for {invite_count} invites.")
                             else:
-                                print(f"DEBUG: Role {role_id} not found")
+                                print(f"DEBUG: Invite reward role {role_id} not found")
 
+        server_info_cursor.execute(f'SELECT join_role_enabled, join_role1, join_role2  FROM "{server_id}"')
+        join_roles = server_info_cursor.fetchone()
+
+        if join_roles[0] == "True":
+            join_role = guild.get_role(int(join_roles[1]))
+
+            if join_roles[0] or join_roles[2] is not None:
+                for i in range(2):
+                    try:
+                        role_id = join_roles[i + 1]
+
+                        if role_id:
+                            role = guild.get_role(int(role_id))
+                            if role:
+                                await member.add_roles(role)
+                                #print(f"DEBUG: Role {role.name} was added to {member.name} for {invite_count} invites.")
+                            else:
+                                print(f"Join role {role_id} not found")
+                    except:
+                        print("An exception occurred")
 
         invite_codes_conn = get_db_connection(guild.id)
         invite_codes_cursor = invite_codes_conn.cursor()
