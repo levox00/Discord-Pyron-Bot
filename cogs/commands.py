@@ -353,12 +353,24 @@ class Basic(commands.Cog):
         interaction: Interaction,
         enabled: str = nextcord.SlashOption(description="Enable or disable welcome messages (True/False)", required=True, choices=["True", "False"])
     ):
+        if interaction.guild is None:
+            await interaction.response.send_message("This command can only be used in a server.", ephemeral=True)
+            return
+        else:
+            pass
+        if interaction.user.guild_permissions.administrator:
+            pass
+        else:
+            await interaction.response.send_message("You need admin perms to use this command.", ephemeral=True)
+            return
         server_id = str(interaction.guild_id)
         conn = get_db_connection()
         cursor = conn.cursor()
         db_path = os.path.join(base_dir, "..", "server_settings.sqlite")
         # Sicherstellen, dass die Tabelle existiert
         create_server_table_if_not_exists(db_path, str(interaction.guild_id))
+        
+
 
         if enabled == "True":
             cursor.execute(f''' 
